@@ -21,7 +21,7 @@ class Supplier(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='author', **NULLABLE)
     supplier = models.ForeignKey('Supplier', on_delete=models.CASCADE, verbose_name='supplier', related_name='related_suppliers', **NULLABLE)
     title = models.CharField(max_length=70, verbose_name='title')
-    email = models.EmailField(unique=True, verbose_name='email')
+    email = models.EmailField(verbose_name='email')
     country = models.CharField(max_length=50, verbose_name='country')
     city = models.CharField(max_length=50, verbose_name='city')
     street = models.CharField(max_length=50, verbose_name='street')

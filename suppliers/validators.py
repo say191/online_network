@@ -14,17 +14,17 @@ class TypeAndSupplierValidator:
             raise ValidationError("A factory cannot have a supplier")
 
 
-class TypeAndDebtValidator:
+class SupplierAndDebtValidator:
     """Validator for fields type and debt"""
     def __init__(self, field1, field2):
         self.field1 = field1
         self.field2 = field2
 
     def __call__(self, value):
-        type = value.get(self.field1)
+        supplier = value.get(self.field1)
         debt = value.get(self.field2)
-        if type == 'FA' and debt:
-            raise ValidationError("A factory cannot have a debt")
+        if not supplier and debt:
+            raise ValidationError("Supplier cannot have a debt in zero level")
 
 
 class SupplierValidator:
