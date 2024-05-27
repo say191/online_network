@@ -20,10 +20,10 @@
 Клонируем репозиторий
 
 Устанавливаем виртуальное окружение
-python -m venv venv
+python3 -m venv env 
 
 Запускаем виртуальное окружение
-venv\Scripts\activate.bat
+source env/bin/activate
 
 Устанавливаем библиотеки
 pip install -r requirements.txt
@@ -40,3 +40,6 @@ python manage.py migrate
 Создаем superuser 
 python manage.py csu
 login: admin password: 111
+
+Запускаем проект
+python manage.py runserver
