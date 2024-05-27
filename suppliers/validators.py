@@ -12,8 +12,6 @@ class TypeAndSupplierValidator:
         supplier = value.get(self.field2)
         if type == 'FA' and supplier:
             raise ValidationError("A factory cannot have a supplier")
-        if type in ['RN', 'IE'] and not supplier:
-            raise ValidationError("Retail network or IP must have supplier")
 
 
 class TypeAndDebtValidator:

@@ -16,11 +16,14 @@ class SupplierCreateAPIView(generics.CreateAPIView):
         supplier.author = self.request.user
         if supplier.type == 'FA':
             supplier.level = 0
-        if supplier.supplier:
-            if supplier.supplier.type == 'FA':
-                supplier.level = 1
+        if supplier.type in ['RN', 'IE']:
+            if supplier.supplier:
+                if supplier.supplier.level == 0:
+                    supplier.level = 1
+                else:
+                    supplier.level = 2
             else:
-                supplier.level = 2
+                supplier.level = 0
         supplier.save()
 
 
